@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-15MENMNNYY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-15MENMNNYY');
+</script>
+
+<meta name="description" content="CreatorBox – smarte Haushaltshelfer, praktische Alltags-Gadgets und clevere Ideen für mehr Ordnung.">
+<title>CreatorBox – Smarte Helfer. Mehr Platz. Weniger Stress.</title>
+<style>
+:root{--bg:#070907;--card:#111511;--line:#293129;--green:#39ff14;--text:#f7f9f7;--muted:#aab2ab}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 0,rgba(57,255,20,.08),transparent 35%)}
+.wrap{width:min(1040px,92%);margin:auto}
+header{padding:30px 0 70px}
+nav{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:900;letter-spacing:4px;color:var(--green)}
+.navcta{color:var(--text);text-decoration:none;border:1px solid var(--line);padding:10px 15px;border-radius:999px;font-size:14px}
+.hero{text-align:center;max-width:820px;margin:90px auto 0}
+.kicker{display:inline-block;color:var(--green);font-size:13px;font-weight:800;letter-spacing:3px;margin-bottom:18px}
+h1{font-size:clamp(42px,8vw,82px);line-height:.95;margin:0 0 24px;letter-spacing:-3px}
+.hero p{font-size:19px;line-height:1.55;color:var(--muted);max-width:650px;margin:0 auto 32px}
+.button{display:inline-block;background:var(--green);color:#050705;text-decoration:none;font-weight:900;padding:15px 23px;border-radius:10px;transition:.2s ease}
+.button:hover{transform:translateY(-2px);box-shadow:0 0 22px rgba(57,255,20,.25)}
+section{padding:35px 0 80px}
+.sectionhead{text-align:left;margin-bottom:30px}
+.sectionhead .kicker{margin-bottom:10px}
+h2{font-size:34px;margin:0;letter-spacing:-1px}
+
+/* MAX */
+.max-section{padding:55px 0 75px}
+.max-box{position:relative;display:grid;grid-template-columns:1fr 1.05fr;gap:28px;align-items:center;background:radial-gradient(circle at 78% 18%,rgba(57,255,20,.14),transparent 35%),linear-gradient(145deg,#151a16,#0b0f0c);border:1px solid var(--line);border-radius:28px;padding:28px;overflow:hidden}
+.max-box:after{content:"";position:absolute;width:280px;height:280px;right:-120px;top:-120px;border-radius:50%;background:rgba(57,255,20,.07);filter:blur(30px);pointer-events:none}
+.max-image{position:relative;z-index:1;width:100%;height:auto;display:block;border-radius:20px;object-fit:cover;box-shadow:0 15px 50px rgba(0,0,0,.35)}
+.max-content{position:relative;z-index:2;padding:10px 10px 10px 0}
+.max-content .kicker{margin-bottom:12px}
+.max-content h2{font-size:clamp(34px,5vw,52px);line-height:1;margin-bottom:20px}
+.max-content h2 span{color:var(--green)}
+.max-content p{color:var(--muted);line-height:1.65;font-size:17px;margin:0 0 18px}
+.max-tagline{color:var(--text)!important;font-weight:800;font-size:18px!important;margin-top:25px!important}
+.max-tagline span{color:var(--green)}
+
+/* PRODUCTS */
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(145deg,#151a16,#0e120f);border:1px solid var(--line);border-radius:20px;padding:18px;min-height:100%;display:flex;flex-direction:column}
+.card.book{border-color:rgba(57,255,20,.75);box-shadow:0 0 22px rgba(57,255,20,.10)}
+.card img{width:100%;height:230px;object-fit:cover;display:block;border-radius:16px;margin-bottom:18px;background:#090b09}
+.card.book img{object-fit:contain;background:#050605}
+.card-body{display:flex;flex-direction:column;flex:1}
+.number{font-size:12px;color:var(--green);font-weight:900;letter-spacing:2px}
+.badge{display:inline-block;align-self:flex-start;color:#050705;background:var(--green);font-size:11px;font-weight:900;padding:6px 9px;border-radius:7px;margin-bottom:10px}
+h3{font-size:22px;margin:8px 0}
+.card p{color:var(--muted);line-height:1.45;margin:0 0 18px}
+.price{font-size:21px;font-weight:900;margin-top:auto;margin-bottom:15px}
+.card .button{align-self:stretch;text-align:center;padding:12px 14px;font-size:13px}
+.card:not(.book) .button{background:transparent;color:var(--green);border:1px solid var(--green)}
+.card:not(.book) .button:hover{background:var(--green);color:#050705}
+
+/* WHY */
+.why{border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.point{padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.01)}
+.point b{display:block;color:var(--green);margin-bottom:8px}
+.point span{color:var(--muted);font-size:14px;line-height:1.45}
+
+/* FOOTER */
+footer{padding:55px 0 35px;text-align:center}
+.social a{color:var(--text);text-decoration:none;margin:0 9px;font-weight:700}
+.social a:hover{color:var(--green)}
+.note{max-width:720px;margin:28px auto 0;color:#7f8881;font-size:12px;line-height:1.5}
+
+@media(max-width:850px){.products{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){
+header{padding-bottom:55px}.hero{margin-top:65px}.products,.points{grid-template-columns:1fr}
+.max-box{grid-template-columns:1fr;padding:20px;gap:25px}
+.max-content{padding:0}.max-content h2{font-size:38px}.max-content p{font-size:16px}
+.max-image{max-height:520px;object-fit:cover}
+h1{letter-spacing:-2px}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+<nav>
+<div class="logo">CREATORBOX</div>
+<a class="navcta" href="#produkte">Produkte</a>
+</nav>
+<div class="hero">
+<div class="kicker">KLEINE WOHNUNG • GROSSE IDEEN</div>
+<h1>Smarte Helfer.<br>Mehr Platz. Weniger Stress.</h1>
+<p>Entdecke praktische Haushaltshelfer und clevere Alltags-Gadgets, die Platz sparen, Ordnung schaffen und deinen Alltag einfacher machen.</p>
+<a class="button" href="#produkte">EMPFEHLUNGEN ENTDECKEN ↓</a>
+</div>
+</header>
+
+<main>
+
+<section class="max-section">
+<div class="wrap">
+<div class="max-box">
+<div>
+<img src="max-mit-buch.png" alt="Max von CreatorBox präsentiert das Buch Kleine Wohnung, Große Ideen" class="max-image">
+</div>
+<div class="max-content">
+<div class="kicker">DAS CREATORBOX MASKOTTCHEN</div>
+<h2>Das ist <span>Max.</span></h2>
+<p>Chaos? Kein Problem. Max zeigt dir, wie clevere Lösungen aus einem chaotischen Alltag wieder Ordnung machen.</p>
+<p>Und jetzt hat Max etwas ganz Besonderes dabei: <strong>„Kleine Wohnung, Große Ideen“</strong> – 100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p>
+<p class="max-tagline">CHAOS REIN. <span>ORDNUNG RAUS.</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="produkte" class="wrap">
+<div class="sectionhead">
+<div class="kicker">CREATORBOX PICKS</div>
+<h2>Unsere Produktempfehlungen</h2>
+</div>
+
+<div class="products">
+
+<article class="card book">
+<img src="buch-cover.png" alt="Buch Kleine Wohnung, Große Ideen">
+<div class="card-body">
+<span class="badge">NEU</span>
+<div class="number">01</div>
+<h3>Kleine Wohnung, Große Ideen</h3>
+<p>100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p>
+<div class="price">13,98 €</div>
+<a class="button" href="https://link.amazon/B01bk9OHQ" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
+</div>
+</article>
+
+<article class="card">
+<img src="produkt1-waeschekorb.jpg" alt="Faltbarer Wäschekorb">
+<div class="card-body">
+<div class="number">02</div>
+<h3>Faltbarer Wäschekorb</h3>
+<p>Platzsparend und praktisch – ideal für kleine Wohnungen.</p>
+<a class="button" href="https://link.amazon/B0d34OuXR" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
+</div>
+</article>
+
+<article class="card">
+<img src="produkt2-spuelbecken-caddy.jpg" alt="Spülbecken-Organizer">
+<div class="card-body">
+<div class="number">03</div>
+<h3>Spülbecken-Organizer</h3>
+<p>Mehr Ordnung direkt am Spülbecken und alles griffbereit.</p>
+<a class="button" href="https://link.amazon/B06zL5QlL" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
+</div>
+</article>
+
+<article class="card">
+<img src="produkt3-gemuesehobel.jpg" alt="Gemüseschneider">
+<div class="card-body">
+<div class="number">04</div>
+<h3>Gemüseschneider</h3>
+<p>Schneller schneiden und weniger Aufwand bei der Küchenarbeit.</p>
+<a class="button" href="https://link.amazon/B05Ew39PM" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
+</div>
+</article>
+
+<article class="card">
+<img src="produkt4-servierwagen.jpg" alt="Küchenwagen">
+<div class="card-body">
+<div class="number">05</div>
+<h3>Küchenwagen</h3>
+<p>Mehr Stauraum auf wenig Platz – flexibel in der Küche einsetzbar.</p>
+<a class="button" href="https://link.amazon/B0egnxaN1" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
+</div>
+</article>
+
+<article class="card">
+<img src="produkt5-deckel-organizer.jpg" alt="Küchen-Organizer">
+<div class="card-body">
+<div class="number">06</div>
+<h3>Küchen-Organizer</h3>
+<p>Mehr Ordnung in Schränken und Küche – clever und übersichtlich.</p>
+<a class="button" href="https://link.amazon/B04vUisKI" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
+</div>
+</article>
+
+</div>
+</section>
+
+<section class="why">
+<div class="wrap">
+<div class="sectionhead">
+<div class="kicker">WARUM CREATORBOX?</div>
+<h2>Ausgewählt statt überflutet.</h2>
+</div>
+<div class="points">
+<div class="point"><b>Praktisch</b><span>Alltagshelfer, die einen echten Nutzen haben.</span></div>
+<div class="point"><b>Platzsparend</b><span>Cleverer Stauraum und Lösungen für kleine Räume.</span></div>
+<div class="point"><b>Einfach</b><span>Ein Klick bringt dich direkt zum passenden Angebot.</span></div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="wrap">
+<div class="logo">MEHR VON CREATORBOX</div>
+<div class="social" style="margin-top:18px">
+<a href="https://www.instagram.com/creatorboxde/" target="_blank" rel="noopener">Instagram</a>
+<a href="https://www.tiktok.com/@creatorbox_de" target="_blank" rel="noopener">TikTok</a>
+<a href="https://www.youtube.com/@CreatorBoxDE" target="_blank" rel="noopener">YouTube</a>
+<a href="https://www.pinterest.com/creatorbox_de/" target="_blank" rel="noopener">Pinterest</a>
+</div>
+<div class="note">Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen dadurch keine Mehrkosten.</div>
+</footer>
+
+</body>
+</html>
