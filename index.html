@@ -33,6 +33,9 @@
 .legal-links{display:flex;justify-content:center;flex-wrap:wrap;gap:7px 18px;margin-top:18px}
 .legal-links button{border:0;background:none;color:var(--soft);padding:0;font:inherit;font-size:12px;cursor:pointer}
 .legal-links button:hover{color:var(--green);text-decoration:underline}
+.cookie-settings-link{display:inline-block;margin-top:10px;color:var(--soft);font-size:12px;text-decoration:none}.cookie-settings-link:hover{color:var(--green);text-decoration:underline}
+.consent-banner{display:none;position:fixed;left:18px;right:18px;bottom:18px;z-index:11000;background:linear-gradient(145deg,#151a16,#0b0f0c);border:1px solid #3a443b;border-radius:22px;box-shadow:0 25px 90px rgba(0,0,0,.65);color:var(--text)}
+.consent-inner{width:min(760px,100%);margin:auto;padding:22px}.consent-title{font-size:22px;font-weight:800;margin-bottom:12px}.consent-text{margin:0 0 18px;color:var(--muted);font-size:14px;line-height:1.55}.consent-settings{display:none;margin:0 0 18px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}.consent-row{display:flex;align-items:flex-start;gap:11px;color:var(--muted);font-size:13px;line-height:1.45}.consent-row+ .consent-row{margin-top:13px}.consent-row input{flex:0 0 auto;width:19px;height:19px;margin:1px 0 0;accent-color:var(--green)}.consent-row span{display:block}.consent-row strong{display:block;color:var(--text);margin-bottom:3px}.consent-actions{display:flex;flex-wrap:wrap;gap:9px}.consent-btn{flex:1 1 150px;border:1px solid #465146;background:transparent;color:var(--text);padding:11px 14px;border-radius:10px;font:inherit;font-size:14px;font-weight:700;cursor:pointer}.consent-btn:hover{border-color:var(--green);color:var(--green)}.consent-btn.primary{background:var(--green);border-color:var(--green);color:#050705}.consent-btn.primary:hover{color:#050705;box-shadow:0 0 20px rgba(57,255,20,.2)}
 
 </style>
 </head>
@@ -42,8 +45,8 @@
 <section class="max-section"><div class="wrap"><div class="max-box"><div><img src="max-masterbox.png" alt="Max von CreatorBox präsentiert das Buch Kleine Wohnung, Große Ideen" class="max-image"></div><div class="max-content"><div class="kicker">DAS CREATORBOX-MASKOTTCHEN</div><h2>Das ist <span>Max.</span></h2><p>Chaos? Kein Problem. Max zeigt dir, wie clevere Lösungen aus einem chaotischen Alltag wieder Ordnung machen.</p><p>Und jetzt hat Max etwas ganz Besonderes dabei: <strong>„Kleine Wohnung, Große Ideen“</strong> – 100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p><p class="max-tagline">CHAOS RAUS. <span>ORDNUNG REIN.</span></p></div></div></div></section>
 <section id="produkte" class="wrap"><div class="sectionhead"><div class="kicker">CREATORBOX PICKS</div><h2>7 clevere Helfer, die wirklich Platz schaffen.</h2><p class="section-intro">Von Küche bis Ordnung: praktische Produkte, die kleine Wohnungen einfacher machen.</p></div><div class="products">
 <article id="produkt01" class="card book"><div class="product-image-wrap"><img src="produkt01-buch.png" alt="Buch Kleine Wohnung, Große Ideen"></div><div class="card-body"><span class="badge">CREATORBOX ORIGINAL</span><div class="recommendation">Das eigene CreatorBox-Buch</div><div class="number">01</div><h3>Kleine Wohnung, Große Ideen</h3><p>100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p><div class="price">13,98 €</div><a class="button" href="https://link.amazon/B01bk9OHQ" target="_blank" rel="nofollow sponsored noopener">BUCH ENTDECKEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><img src="produkt02-waeschekorb-neu.png" alt="Faltbarer Wäschekorb"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">02</div><h3>Faltbarer Wäschekorb</h3><p>Platzsparend und praktisch – ideal für kleine Wohnungen.</p><a class="button" href="https://link.amazon/B0d34OuXR" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article id="produkt02" class="card"><div class="product-image-wrap"><img src="produkt03-spuelbecken-caddy.png" alt="Spülbecken-Organizer"></div><div class="card-body"><span class="badge top-pick">⭐ CREATORBOX TOP PICK</span><div class="recommendation">CREATORBOX PICK</div><div class="number">03</div><h3>Spülbecken-Organizer</h3><p>Mehr Ordnung direkt am Spülbecken und alles griffbereit.</p><a class="button" href="https://link.amazon/B06zL5QlL" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
+<article class="card"><div class="product-image-wrap"><img src="produkt02-waeschekorb-neu.png" alt="Faltbarer Wäschekorb"></div><div class="card-body"><span class="badge top-pick">⭐ CREATORBOX TOP PICK</span><div class="recommendation">CREATORBOX PICK</div><div class="number">02</div><h3>Faltbarer Wäschekorb</h3><p>Platzsparend und praktisch – ideal für kleine Wohnungen.</p><a class="button" href="https://link.amazon/B0d34OuXR" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
+<article id="produkt02" class="card"><div class="product-image-wrap"><img src="produkt03-spuelbecken-caddy.png" alt="Spülbecken-Organizer"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">03</div><h3>Spülbecken-Organizer</h3><p>Mehr Ordnung direkt am Spülbecken und alles griffbereit.</p><a class="button" href="https://link.amazon/B06zL5QlL" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
 <article class="card"><div class="product-image-wrap"><img src="produkt04-gemuesehobel.png" alt="Gemüseschneider"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">04</div><h3>Gemüseschneider</h3><p>Schneller schneiden und weniger Aufwand bei der Küchenarbeit.</p><a class="button" href="https://link.amazon/B05Ew39PM" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
 <article id="produkt03" class="card"><div class="product-image-wrap"><img src="produkt05-kuechenwagen.png" alt="Küchenwagen"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">05</div><h3>Küchenwagen</h3><p>Mehr Stauraum auf wenig Platz – flexibel in der Küche einsetzbar.</p><a class="button" href="https://link.amazon/B0egnxaN1" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
 <article class="card"><div class="product-image-wrap"><img src="produkt06-deckel-organizer.png" alt="Deckel- und Schneidbrett-Organizer"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">06</div><h3>Deckel-Organizer für Küchenschränke</h3><p>Mehr Ordnung für Vorratsdeckel und Küchenzubehör – mit verstellbaren Fächern flexibel anpassbar und platzsparend verstaut.</p><a class="button" href="https://link.amazon/B0emmTAuI" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
@@ -94,16 +97,14 @@
 
 
 <footer class="wrap"><div class="logo">MEHR VON CREATORBOX</div><div class="social" style="margin-top:18px"><a href="#rechtliches">Impressum &amp; Datenschutz</a><a href="https://www.instagram.com/creatorboxde/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@creatorbox_de" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@CreatorBoxDE" target="_blank" rel="noopener">YouTube</a><a href="https://www.pinterest.com/creatorbox_de/" target="_blank" rel="noopener">Pinterest</a></div><div class="legal-links"><button type="button" data-open-modal="impressumModal">Impressum</button><button type="button" data-open-modal="datenschutzModal">Datenschutz</button><button type="button" data-open-modal="amazonModal">Amazon-Partnerprogramm</button></div><a href="#" class="cookie-settings-link" data-open-consent>Cookie-Einstellungen</a>
-<div class="note">Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen dadurch keine Mehrkosten.</div><div class="footer-brand">CREATORBOX • SMARTE IDEEN FÜR DEN ALLTAG</div></footer>
+<div class="note">Enthält Amazon-Partnerlinks. Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.</div><div class="footer-brand">CREATORBOX • SMARTE IDEEN FÜR DEN ALLTAG</div></footer>
 
 <div class="consent-banner" id="consentBanner" role="dialog" aria-modal="false" aria-labelledby="consentTitle">
   <div class="consent-inner">
-    <div class="consent-title" id="consentTitle">Deine Privatsphäre ist uns wichtig</div>
+    <div class="consent-title" id="consentTitle">Cookie-Einstellungen</div>
     <p class="consent-text">
-      CreatorBox verwendet optionale Analyse-Technologien von Google Analytics, um zu verstehen,
-      wie die Website genutzt wird. Diese Analyse ist nicht für die Funktion der Website erforderlich.
-      Google Analytics wird erst aktiviert, wenn du zustimmst. Deine Auswahl kannst du jederzeit über
-      „Cookie-Einstellungen“ im Footer ändern.
+      Wir verwenden notwendige Funktionen. Google Analytics ist optional und wird nur aktiviert,
+      wenn du zustimmst. Details und deine Auswahl findest du unter „Details & Einstellungen“.
     </p>
     <div class="consent-settings" id="consentSettings">
       <label class="consent-row">
@@ -118,7 +119,7 @@
     <div class="consent-actions">
       <button type="button" class="consent-btn primary" id="consentAccept">Alle akzeptieren</button>
       <button type="button" class="consent-btn" id="consentReject">Nur notwendige</button>
-      <button type="button" class="consent-btn" id="consentManage">Einstellungen</button>
+      <button type="button" class="consent-btn" id="consentManage">Details &amp; Einstellungen</button>
       <button type="button" class="consent-btn" id="consentSave" style="display:none">Auswahl speichern</button>
     </div>
   </div>
