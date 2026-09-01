@@ -15,33 +15,25 @@
 .why{border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}.why .sectionhead{text-align:center}.points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}.point{padding:20px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.01)}.point b{display:block;color:var(--green);margin-bottom:8px}.point span{color:var(--muted);font-size:14px;line-height:1.45}footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 18px}.social a{color:var(--text);text-decoration:none;font-weight:700;transition:.2s ease}.social a:hover{color:var(--green)}.note{max-width:720px;margin:28px auto 0;color:var(--soft);font-size:12px;line-height:1.5}.footer-brand{margin-top:34px;color:#59615a;font-size:11px;letter-spacing:2px;font-weight:800}
 @media(max-width:850px){.products{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){header{padding-bottom:55px}.hero{margin-top:65px}.products,.points{grid-template-columns:1fr}.max-box{grid-template-columns:1fr;padding:20px;gap:25px}.max-content{padding:0}.max-content h2{font-size:38px}.max-content p{font-size:16px}.max-image{max-height:520px;object-fit:cover}h1{letter-spacing:-2px}}
 
-.legal-section{padding:70px 0 55px;border-top:1px solid var(--line)}
-.legal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.legal-card{background:linear-gradient(145deg,var(--card2),#0e120f);border:1px solid var(--line);border-radius:18px;padding:22px}
-.legal-card h3{color:var(--green);font-size:20px;margin:0 0 14px}
-.legal-card p{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 14px}
-.legal-card strong{color:var(--text)}
-.legal-small{font-size:12px!important;color:var(--soft)!important}
 
-
-/* Datenschutz / Consent */
-.consent-banner{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;display:none;background:rgba(12,15,12,.97);border:1px solid #394239;border-radius:18px;box-shadow:0 20px 70px rgba(0,0,0,.55);backdrop-filter:blur(14px)}
-.consent-inner{width:min(1050px,100%);margin:auto;padding:20px}
-.consent-title{font-size:18px;font-weight:900;margin:0 0 8px;color:var(--text)}
-.consent-text{font-size:13px;line-height:1.55;color:var(--muted);margin:0;max-width:900px}
-.consent-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}
-.consent-btn{border:1px solid var(--line);background:transparent;color:var(--text);padding:11px 15px;border-radius:9px;font-weight:800;cursor:pointer}
-.consent-btn.primary{background:var(--green);border-color:var(--green);color:#050705}
-.consent-btn:hover{border-color:var(--green)}
-.consent-settings{display:none;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
-.consent-row{display:flex;align-items:flex-start;gap:12px;padding:12px 0}
-.consent-row input{margin-top:4px;accent-color:var(--green)}
-.consent-row strong{display:block;margin-bottom:3px}
-.consent-row span{display:block;color:var(--muted);font-size:12px;line-height:1.45}
-.cookie-settings-link{display:inline-block;margin-top:12px;color:var(--green);font-size:12px;font-weight:800;cursor:pointer;text-decoration:underline}
 @media(max-width:700px){.consent-banner{left:9px;right:9px;bottom:9px}.consent-inner{padding:16px}.consent-actions{display:grid;grid-template-columns:1fr}.consent-btn{width:100%}}
 
 .creatorbox-highlight{animation:creatorboxPulse 1.8s ease-out}@keyframes creatorboxPulse{0%{box-shadow:0 0 0 3px var(--green),0 0 35px rgba(57,255,20,.35)}100%{box-shadow:0 0 0 0 transparent,0 0 0 transparent}}
+
+.legal-modal{position:fixed;inset:0;z-index:10000;display:none;align-items:center;justify-content:center;padding:18px}
+.legal-modal.open{display:flex}
+.legal-modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(5px)}
+.legal-modal-box{position:relative;z-index:1;width:min(680px,100%);max-height:88vh;overflow:auto;background:linear-gradient(145deg,#151a16,#0b0f0c);border:1px solid #3a443b;border-radius:22px;padding:30px;box-shadow:0 25px 90px rgba(0,0,0,.6)}
+.legal-modal-box h2{margin:0 0 20px;font-size:34px}
+.legal-modal-box p{color:var(--muted);font-size:14px;line-height:1.65;margin:0 0 15px}
+.legal-modal-box strong{color:var(--text)}
+.legal-close{position:absolute;right:14px;top:10px;border:0;background:transparent;color:var(--muted);font-size:32px;line-height:1;cursor:pointer}
+.legal-close:hover{color:var(--green)}
+.legal-small{color:var(--soft)!important;font-size:12px!important}
+.legal-links{display:flex;justify-content:center;flex-wrap:wrap;gap:7px 18px;margin-top:18px}
+.legal-links button{border:0;background:none;color:var(--soft);padding:0;font:inherit;font-size:12px;cursor:pointer}
+.legal-links button:hover{color:var(--green);text-decoration:underline}
+
 </style>
 </head>
 <body>
@@ -60,79 +52,49 @@
 <section class="why"><div class="wrap"><div class="sectionhead"><div class="kicker">WARUM CREATORBOX?</div><h2>Ausgewählt statt überflutet.</h2></div><div class="points"><div class="point"><b>Praktisch</b><span>Praktische Alltagshelfer, die einen echten Nutzen haben.</span></div><div class="point"><b>Platzsparend</b><span>Cleverer Stauraum und Lösungen für kleine Räume.</span></div><div class="point"><b>Einfach</b><span>Ein Klick bringt dich direkt zum passenden Angebot.</span></div></div></div></section>
 </main>
 
-<section id="rechtliches" class="legal-section">
-  <div class="wrap">
-    <div class="sectionhead">
-      <div class="kicker">RECHTLICHES</div>
-      <h2>Transparenz &amp; Datenschutz</h2>
-    </div>
 
-    <div class="legal-grid">
-      <article class="legal-card">
-        <h3>Impressum</h3>
-        <p><strong>Angaben gemäß § 5 DDG</strong></p>
-        <p>
-          <strong>Sebastian Stratmann</strong><br>
-          Rosenheimer Straße 218<br>
-          81669 München<br>
-          Deutschland
-        </p>
-        <p>
-          E-Mail: <strong>pinterest.bs@web.de</strong>
-        </p>
-        <p class="legal-small">
-          Verantwortlich für die Inhalte dieser Website ist die oben genannte Person.
-        </p>
-      </article>
-
-      <article class="legal-card">
-        <h3>Datenschutzerklärung</h3>
-        <p>
-          Diese Website wird über GitHub Pages bereitgestellt. Für die technische Bereitstellung
-          können technisch erforderliche Verbindungsdaten verarbeitet werden. Die Website setzt
-          keine optionalen Analyse-Technologien ein, bevor du ihnen zugestimmt hast.
-        </p>
-        <p>
-          <strong>Google Analytics 4:</strong> Wir verwenden Google Analytics nur nach deiner
-          ausdrücklichen Einwilligung, um die Nutzung der Website statistisch auszuwerten.
-          Rechtsgrundlage ist deine Einwilligung. Du kannst sie jederzeit über „Cookie-Einstellungen“
-          im Footer widerrufen.
-        </p>
-        <p>
-          Ohne Einwilligung wird das Google-Analytics-Skript nicht geladen und es werden keine
-          Analytics-Daten an Google übertragen. Für Analytics werden keine Werbefunktionen oder
-          personalisierten Werbesignale aktiviert.
-        </p>
-        <p>
-          Verantwortlicher ist Sebastian Stratmann, Rosenheimer Straße 218, 81669 München,
-          E-Mail: pinterest.bs@web.de. Du hast insbesondere Rechte auf Auskunft, Berichtigung,
-          Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch, soweit
-          die gesetzlichen Voraussetzungen vorliegen. Außerdem besteht ein Beschwerderecht bei
-          einer Datenschutzaufsichtsbehörde.
-        </p>
-        <p class="legal-small">
-          Diese Datenschutzhinweise beschreiben die aktuell in dieser statischen CreatorBox-Seite
-          eingebauten Funktionen. Eine individuelle juristische Prüfung ersetzen sie nicht.
-        </p>
-      </article>
-
-      <article class="legal-card">
-        <h3>Amazon-Partnerprogramm</h3>
-        <p>
-          CreatorBox nimmt am Amazon EU-Partnerprogramm teil. Als Amazon-Partner verdiene ich an
-          qualifizierten Verkäufen.
-        </p>
-        <p>
-          Links zu Amazon können als Partner-Links gekennzeichnet sein. Wenn du über einen solchen
-          Link einkaufst, kann CreatorBox eine Provision erhalten. Für dich entsteht dadurch kein
-          Aufpreis.
-        </p>
-      </article>
-    </div>
+<!-- Rechtliche Inhalte werden nur bei Klick als Fenster eingeblendet. -->
+<div class="legal-modal" id="impressumModal" aria-hidden="true">
+  <div class="legal-modal-backdrop" data-close-modal></div>
+  <div class="legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="impressumTitle">
+    <button class="legal-close" type="button" data-close-modal aria-label="Fenster schließen">×</button>
+    <div class="kicker">RECHTLICHES</div>
+    <h2 id="impressumTitle">Impressum</h2>
+    <p><strong>Angaben gemäß § 5 DDG</strong></p>
+    <p><strong>Sebastian Stratmann</strong><br>Rosenheimer Straße 218<br>81669 München<br>Deutschland</p>
+    <p>E-Mail: <strong>pinterest.bs@web.de</strong></p>
   </div>
-</section>
+</div>
 
-<footer class="wrap"><div class="logo">MEHR VON CREATORBOX</div><div class="social" style="margin-top:18px"><a href="#" class="cookie-settings-link" data-open-consent>Cookie-Einstellungen</a><a href="#rechtliches">Impressum &amp; Datenschutz</a><a href="https://www.instagram.com/creatorboxde/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@creatorbox_de" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@CreatorBoxDE" target="_blank" rel="noopener">YouTube</a><a href="https://www.pinterest.com/creatorbox_de/" target="_blank" rel="noopener">Pinterest</a></div><div class="note">Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen dadurch keine Mehrkosten.</div><div class="footer-brand">CREATORBOX • SMARTE IDEEN FÜR DEN ALLTAG</div></footer>
+<div class="legal-modal" id="datenschutzModal" aria-hidden="true">
+  <div class="legal-modal-backdrop" data-close-modal></div>
+  <div class="legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="datenschutzTitle">
+    <button class="legal-close" type="button" data-close-modal aria-label="Fenster schließen">×</button>
+    <div class="kicker">RECHTLICHES</div>
+    <h2 id="datenschutzTitle">Datenschutz</h2>
+    <p>Diese Website wird über GitHub Pages bereitgestellt. Für die technische Bereitstellung können technisch erforderliche Verbindungsdaten verarbeitet werden.</p>
+    <p><strong>Google Analytics 4:</strong> Wir verwenden Google Analytics nur nach deiner ausdrücklichen Einwilligung, um die Nutzung der Website statistisch auszuwerten. Rechtsgrundlage ist deine Einwilligung. Du kannst sie jederzeit über „Cookie-Einstellungen“ im Footer widerrufen.</p>
+    <p>Ohne Einwilligung wird das Google-Analytics-Skript nicht geladen und es werden keine Analytics-Daten an Google übertragen. Für Analytics werden keine Werbefunktionen oder personalisierten Werbesignale aktiviert.</p>
+    <p>Verantwortlicher ist Sebastian Stratmann, Rosenheimer Straße 218, 81669 München, E-Mail: pinterest.bs@web.de.</p>
+    <p>Du hast insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch, soweit die gesetzlichen Voraussetzungen vorliegen. Außerdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde.</p>
+    <p class="legal-small">Diese Hinweise beschreiben die aktuell in der CreatorBox-Seite eingebauten Funktionen. Eine individuelle juristische Prüfung ersetzen sie nicht.</p>
+  </div>
+</div>
+
+<div class="legal-modal" id="amazonModal" aria-hidden="true">
+  <div class="legal-modal-backdrop" data-close-modal></div>
+  <div class="legal-modal-box" role="dialog" aria-modal="true" aria-labelledby="amazonTitle">
+    <button class="legal-close" type="button" data-close-modal aria-label="Fenster schließen">×</button>
+    <div class="kicker">TRANSPARENZ</div>
+    <h2 id="amazonTitle">Amazon-Partnerprogramm</h2>
+    <p>CreatorBox nimmt am Amazon EU-Partnerprogramm teil. Als Amazon-Partner verdiene ich an qualifizierten Verkäufen.</p>
+    <p>Links zu Amazon können als Partner-Links gekennzeichnet sein. Wenn du über einen solchen Link einkaufst, kann CreatorBox eine Provision erhalten. Für dich entsteht dadurch kein Aufpreis.</p>
+  </div>
+</div>
+
+
+<footer class="wrap"><div class="logo">MEHR VON CREATORBOX</div><div class="social" style="margin-top:18px"><a href="#rechtliches">Impressum &amp; Datenschutz</a><a href="https://www.instagram.com/creatorboxde/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@creatorbox_de" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@CreatorBoxDE" target="_blank" rel="noopener">YouTube</a><a href="https://www.pinterest.com/creatorbox_de/" target="_blank" rel="noopener">Pinterest</a></div><div class="legal-links"><button type="button" data-open-modal="impressumModal">Impressum</button><button type="button" data-open-modal="datenschutzModal">Datenschutz</button><button type="button" data-open-modal="amazonModal">Amazon-Partnerprogramm</button></div><a href="#" class="cookie-settings-link" data-open-consent>Cookie-Einstellungen</a>
+<div class="note">Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen dadurch keine Mehrkosten.</div><div class="footer-brand">CREATORBOX • SMARTE IDEEN FÜR DEN ALLTAG</div></footer>
 
 <div class="consent-banner" id="consentBanner" role="dialog" aria-modal="false" aria-labelledby="consentTitle">
   <div class="consent-inner">
@@ -251,6 +213,37 @@
   }
   window.addEventListener('load', highlightTarget);
   window.addEventListener('hashchange', highlightTarget);
+})();
+</script>
+
+
+<script>
+(function(){
+  function closeAll(){
+    document.querySelectorAll('.legal-modal.open').forEach(function(modal){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+    });
+    document.body.style.overflow='';
+  }
+  document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var modal=document.getElementById(btn.getAttribute('data-open-modal'));
+      if(!modal) return;
+      closeAll();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      var close=modal.querySelector('.legal-close');
+      if(close) close.focus();
+    });
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function(el){
+    el.addEventListener('click',closeAll);
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape') closeAll();
+  });
 })();
 </script>
 
