@@ -35,6 +35,14 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 .icon{position:relative;z-index:2;font-size:96px;filter:drop-shadow(7px 7px 0 #020302);text-shadow:3px 3px 0 #39ff14,-3px -3px 0 #0a0d0a;transform:rotate(-4deg)}
 .comic-label{position:absolute;z-index:3;left:12px;bottom:12px;background:#39ff14;color:#050705;font-weight:900;font-size:11px;letter-spacing:1px;padding:7px 9px;border-radius:7px;transform:rotate(-2deg);box-shadow:4px 4px 0 #020302}.comic-label.dark{background:#f7f9f7;color:#050705;left:auto;right:12px;transform:rotate(2deg)}
 @media(max-width:850px){.products{grid-template-columns:repeat(2,1fr)}}@media(max-width:700px){header{padding-bottom:55px}.hero{margin-top:65px}.products,.points{grid-template-columns:1fr}.max-box{grid-template-columns:1fr;padding:20px;gap:25px}.max-content{padding:0}.max-content h2{font-size:38px}.max-content p{font-size:16px}.max-image{max-height:520px;object-fit:cover}h1{letter-spacing:-2px}.product-image-wrap{height:250px}}
+
+
+.comic{height:100%;width:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 50%,rgba(57,255,20,.12),transparent 58%),linear-gradient(145deg,#101510,#070907)}
+.comic:before{content:"";position:absolute;inset:0;opacity:.16;background-image:radial-gradient(#39ff14 1px,transparent 1px);background-size:9px 9px;mask-image:linear-gradient(to bottom right,transparent,black 35%,black 70%,transparent)}
+.comic .burst{position:absolute;inset:-25%;background:repeating-conic-gradient(from 0deg,transparent 0deg,transparent 9deg,rgba(57,255,20,.045) 10deg,transparent 11deg);transform:rotate(8deg)}
+.icon{position:relative;z-index:2;font-size:96px;filter:drop-shadow(7px 7px 0 #020302);text-shadow:3px 3px 0 #39ff14,-3px -3px 0 #0a0d0a;transform:rotate(-4deg)}
+.comic-label{position:absolute;z-index:3;left:12px;bottom:12px;background:#39ff14;color:#050705;font-weight:900;font-size:11px;letter-spacing:1px;padding:7px 9px;border-radius:7px;transform:rotate(-2deg);box-shadow:4px 4px 0 #020302}.comic-label.dark{background:#f7f9f7;color:#050705;left:auto;right:12px;transform:rotate(2deg)}
+
 </style>
 </head>
 <body>
@@ -42,20 +50,10 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <main>
 <section class="max-section"><div class="wrap"><div class="max-box"><div><img src="max-mit-buch.png" alt="Max von CreatorBox präsentiert das Buch Kleine Wohnung, Große Ideen" class="max-image"></div><div class="max-content"><div class="kicker">DAS CREATORBOX-MASKOTTCHEN</div><h2>Das ist <span>Max.</span></h2><p>Chaos? Kein Problem. Max zeigt dir, wie clevere Lösungen aus einem chaotischen Alltag wieder Ordnung machen.</p><p>Und jetzt hat Max etwas ganz Besonderes dabei: <strong>„Kleine Wohnung, Große Ideen“</strong> – 100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p><p class="max-tagline">CHAOS RAUS. <span>ORDNUNG REIN.</span></p></div></div></div></section>
 <section id="produkte" class="wrap"><div class="sectionhead"><div class="kicker">CREATORBOX PICKS</div><h2>Unsere Produktempfehlungen</h2></div><div class="products">
-<article class="card book"><div class="product-image-wrap"><img src="produkt01-buch.png" alt="Buch Kleine Wohnung, Große Ideen"></div><div class="card-body"><span class="badge">NEU</span><div class="number">01</div><h3>Kleine Wohnung, Große Ideen</h3><p>100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p><div class="price">13,98 €</div><a class="button" href="https://link.amazon/B01bk9OHQ" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><img src="produkt02-waeschekorb-neu.png" alt="Faltbarer Wäschekorb"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">02</div><h3>Faltbarer Wäschekorb</h3><p>Platzsparend und praktisch – ideal für kleine Wohnungen.</p><a class="button" href="https://link.amazon/B0d34OuXR" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><img src="produkt03-spuelbecken-caddy.png" alt="Spülbecken-Organizer"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">03</div><h3>Spülbecken-Organizer</h3><p>Mehr Ordnung direkt am Spülbecken und alles griffbereit.</p><a class="button" href="https://link.amazon/B06zL5QlL" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><img src="produkt04-gemuesehobel.png" alt="Gemüseschneider"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">04</div><h3>Gemüseschneider</h3><p>Schneller schneiden und weniger Aufwand bei der Küchenarbeit.</p><a class="button" href="https://link.amazon/B05Ew39PM" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><img src="produkt05-kuechenwagen.png" alt="Küchenwagen"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">05</div><h3>Küchenwagen</h3><p>Mehr Stauraum auf wenig Platz – flexibel in der Küche einsetzbar.</p><a class="button" href="https://link.amazon/B0egnxaN1" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><img src="produkt06-deckel-organizer.png" alt="Küchen-Organizer für Topf- und Pfannendeckel"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">06</div><h3>Küchen-Organizer</h3><p>Mehr Ordnung für Tupperware-, Topf- und Pfannendeckel – übersichtlich und griffbereit.</p><a class="button" href="https://link.amazon/B04vUisKI" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🍽️</div><div class="comic-label">ZU WENIG PLATZ?</div><div class="comic-label dark">MEHR STAURAUM!</div></div></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">12</div><h3>SONGMICS Küchen-Organizer</h3><p>Mehr nutzbarer Stauraum in Schränken und auf wenig Fläche – clever organisiert.</p><a class="button" href="https://www.amazon.de/s?k=SONGMICS+K%C3%BCchen-Organizer" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🔌</div><div class="comic-label">KABELCHAOS?</div><div class="comic-label dark">ORDNUNG!</div></div></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">08</div><h3>Kabelmanagement-Box</h3><p>Mehr Ordnung am Schreibtisch und im Wohnzimmer – Kabelsalat verschwindet elegant.</p><a class="button" href="https://www.amazon.de/s?k=Kabelmanagement+Box" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🚪</div><div class="comic-label">KEIN PLATZ?</div><div class="comic-label dark">TÜR NUTZEN!</div></div></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">09</div><h3>Tür-Hängeorganizer</h3><p>Ungenutzten Platz hinter der Tür in zusätzlichen Stauraum verwandeln.</p><a class="button" href="https://www.amazon.de/s?k=T%C3%BCr+H%C3%A4ngeorganizer" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🧺</div><div class="comic-label">UNTER DER SPÜLE?</div><div class="comic-label dark">NUTZ DEN PLATZ!</div></div></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">10</div><h3>Untertisch-Roll-Organizer</h3><p>Reinigungsmittel und Küchenhelfer übersichtlich und leicht erreichbar verstauen.</p><a class="button" href="https://www.amazon.de/s?k=Untertisch+Roll+Organizer+Sp%C3%BCle" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">💧</div><div class="comic-label">FEUCHTE LUFT?</div><div class="comic-label dark">TROCKENER!</div></div></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">11</div><h3>Luftentfeuchter</h3><p>Praktische Hilfe gegen überschüssige Feuchtigkeit – besonders interessant für Bad und Wohnräume.</p><a class="button" href="https://www.amazon.de/s?k=Luftentfeuchter+Wohnung" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card"><div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">👕</div><div class="comic-label">WÄSCHE ÜBERALL?</div><div class="comic-label dark">MEHR PLATZ!</div></div></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">12</div><h3>Leifheit Pegasus 180 Solid</h3><p>Viel Trockenfläche, trotzdem flexibel – praktisch für kleine Wohnungen.</p><a class="button" href="https://www.amazon.de/s?k=Leifheit+Pegasus+180+Solid" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article>
-<article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🍽️</div><div class="comic-label">ZU WENIG PLATZ?</div><div class="comic-label dark">MEHR STAURAUM!</div></div></div>
+<article class="card book"><div class="product-image-wrap"><img src="produkt01-buch.png" alt="Buch Kleine Wohnung, Große Ideen"></div><div class="card-body"><span class="badge">NEU</span><div class="number">01</div><h3>Kleine Wohnung, Große Ideen</h3><p>100 clevere Gadgets und smarte Lösungen für mehr Platz, Ordnung, Komfort und weniger Arbeit.</p><div class="price">13,98 €</div><a class="button" href="https://link.amazon/B01bk9OHQ" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article><article class="card"><div class="product-image-wrap"><img src="produkt02-waeschekorb-neu.png" alt="Faltbarer Wäschekorb"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">02</div><h3>Faltbarer Wäschekorb</h3><p>Platzsparend und praktisch – ideal für kleine Wohnungen.</p><a class="button" href="https://link.amazon/B0d34OuXR" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article><article class="card"><div class="product-image-wrap"><img src="produkt03-spuelbecken-caddy.png" alt="Spülbecken-Organizer"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">03</div><h3>Spülbecken-Organizer</h3><p>Mehr Ordnung direkt am Spülbecken und alles griffbereit.</p><a class="button" href="https://link.amazon/B06zL5QlL" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article><article class="card"><div class="product-image-wrap"><img src="produkt04-gemuesehobel.png" alt="Gemüseschneider"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">04</div><h3>Gemüseschneider</h3><p>Schneller schneiden und weniger Aufwand bei der Küchenarbeit.</p><a class="button" href="https://link.amazon/B05Ew39PM" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article><article class="card"><div class="product-image-wrap"><img src="produkt05-kuechenwagen.png" alt="Küchenwagen"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">05</div><h3>Küchenwagen</h3><p>Mehr Stauraum auf wenig Platz – flexibel in der Küche einsetzbar.</p><a class="button" href="https://link.amazon/B0egnxaN1" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article><article class="card"><div class="product-image-wrap"><img src="produkt06-deckel-organizer.png" alt="Küchen-Organizer für Topf- und Pfannendeckel"></div><div class="card-body"><div class="recommendation">CREATORBOX PICK</div><div class="number">06</div><h3>Küchen-Organizer</h3><p>Mehr Ordnung für Tupperware-, Topf- und Pfannendeckel – übersichtlich und griffbereit.</p><a class="button" href="https://link.amazon/B04vUisKI" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a></div></article><article class="card">
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">🍽️</div><div class="comic-label">ZU WENIG PLATZ?</div><div class="comic-label dark">MEHR STAURAUM!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">07</div>
@@ -64,8 +62,11 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=SONGMICS+K%C3%BCchen-Organizer" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
+
 <article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🔌</div><div class="comic-label">KABELCHAOS?</div><div class="comic-label dark">ORDNUNG!</div></div></div>
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">🔌</div><div class="comic-label">KABELCHAOS?</div><div class="comic-label dark">ORDNUNG!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">08</div>
@@ -74,8 +75,11 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=Kabelmanagement+Box" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
+
 <article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🚪</div><div class="comic-label">KEIN PLATZ?</div><div class="comic-label dark">TÜR NUTZEN!</div></div></div>
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">🚪</div><div class="comic-label">KEIN PLATZ?</div><div class="comic-label dark">TÜR NUTZEN!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">09</div>
@@ -84,8 +88,11 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=T%C3%BCr+H%C3%A4ngeorganizer" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
+
 <article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🧺</div><div class="comic-label">UNTER DER SPÜLE?</div><div class="comic-label dark">NUTZ DEN PLATZ!</div></div></div>
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">🧺</div><div class="comic-label">UNTER DER SPÜLE?</div><div class="comic-label dark">NUTZ DEN PLATZ!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">10</div>
@@ -94,8 +101,11 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=Untertisch+Roll+Organizer+Sp%C3%BCle" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
+
 <article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">💧</div><div class="comic-label">FEUCHTE LUFT?</div><div class="comic-label dark">TROCKENER!</div></div></div>
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">💧</div><div class="comic-label">FEUCHTE LUFT?</div><div class="comic-label dark">TROCKENER!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">11</div>
@@ -104,8 +114,11 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=Luftentfeuchter+Wohnung" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
+
 <article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">👕</div><div class="comic-label">WÄSCHE ÜBERALL?</div><div class="comic-label dark">MEHR PLATZ!</div></div></div>
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">👕</div><div class="comic-label">WÄSCHE ÜBERALL?</div><div class="comic-label dark">MEHR PLATZ!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">12</div>
@@ -114,8 +127,11 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=Leifheit+Pegasus+180+Solid" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
+
 <article class="card">
-<div class="product-image-wrap"><div class="comic"><div class="burst"></div><div class="icon">🧹</div><div class="comic-label">PUTZEN?</div><div class="comic-label dark">EINFACHER!</div></div></div>
+<div class="product-image-wrap">
+<div class="comic"><div class="burst"></div><div class="icon">🧹</div><div class="comic-label">PUTZEN?</div><div class="comic-label dark">EINFACHER!</div></div>
+</div>
 <div class="card-body">
 <div class="recommendation">CREATORBOX PICK</div>
 <div class="number">13</div>
@@ -124,7 +140,9 @@ footer{padding:55px 0 35px;text-align:center}.social{display:flex;justify-conten
 <a class="button" href="https://www.amazon.de/s?k=Vileda+H2PrO+Flat+Mop+System" target="_blank" rel="nofollow sponsored noopener">PRODUKT ANSEHEN ↗</a>
 </div>
 </article>
-</div></section>
+
+</div>
+
 <section class="why"><div class="wrap"><div class="sectionhead"><div class="kicker">WARUM CREATORBOX?</div><h2>Ausgewählt statt überflutet.</h2></div><div class="points"><div class="point"><b>Praktisch</b><span>Praktische Alltagshelfer, die einen echten Nutzen haben.</span></div><div class="point"><b>Platzsparend</b><span>Cleverer Stauraum und Lösungen für kleine Räume.</span></div><div class="point"><b>Einfach</b><span>Ein Klick bringt dich direkt zum passenden Angebot.</span></div></div></div></section>
 </main>
 <footer class="wrap"><div class="logo">MEHR VON CREATORBOX</div><div class="social" style="margin-top:18px"><a href="https://www.instagram.com/creatorboxde/" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@creatorbox_de" target="_blank" rel="noopener">TikTok</a><a href="https://www.youtube.com/@CreatorBoxDE" target="_blank" rel="noopener">YouTube</a><a href="https://www.pinterest.com/creatorbox_de/" target="_blank" rel="noopener">Pinterest</a></div><div class="note">Hinweis: Als Amazon-Partner verdiene ich an qualifizierten Verkäufen. Für dich entstehen dadurch keine Mehrkosten.</div><div class="footer-brand">CREATORBOX • SMARTE IDEEN FÜR DEN ALLTAG</div></footer>
