@@ -111,25 +111,52 @@ const reject=document.getElementById('consentReject');
 const manage=document.getElementById('consentManage');
 const save=document.getElementById('consentSave');
 
+function cleanReferrer(){
+  try{
+    if(!document.referrer)return '(direct)';
+    const u=new URL(document.referrer);
+    return u.origin+u.pathname;
+  }catch(e){return '(unknown)'}
+}
+
+function referrerDomain(){
+  try{
+    if(!document.referrer)return '(direct)';
+    return new URL(document.referrer).hostname.replace(/^www\./,'');
+  }catch(e){return '(unknown)'}
+}
+
 function getAttribution(){
   const p=new URLSearchParams(location.search);
+  const hasSource=!!p.get('utm_source');
+  const ref=cleanReferrer();
+  const domain=referrerDomain();
   return {
     utm_source:p.get('utm_source')||'(direct)',
     utm_medium:p.get('utm_medium')||'(none)',
     utm_campaign:p.get('utm_campaign')||'(not set)',
     utm_content:p.get('utm_content')||'(not set)',
-    utm_term:p.get('utm_term')||'(not set)'
+    utm_term:p.get('utm_term')||'(not set)',
+    referrer_url:ref,
+    referrer_domain:domain,
+    traffic_source:hasSource?p.get('utm_source'):domain,
+    landing_url:location.origin+location.pathname
   };
 }
 
 function storeAttribution(){
   const a=getAttribution();
-  const hasUtm=Object.keys(a).some(k=>k.startsWith('utm_')&&a[k]!=='(not set)'&&a[k]!=='(direct)'&&a[k]!=='(none)');
-  if(!hasUtm)return;
-  if(!localStorage.getItem(FIRST_TOUCH_KEY)){
+  const hasUtm=!!new URLSearchParams(location.search).get('utm_source');
+  const hasReferrer=document.referrer!=='';
+  if(!hasUtm&&!hasReferrer&&!localStorage.getItem(FIRST_TOUCH_KEY)){
     localStorage.setItem(FIRST_TOUCH_KEY,JSON.stringify({...a,savedAt:new Date().toISOString()}));
   }
-  localStorage.setItem(LAST_TOUCH_KEY,JSON.stringify({...a,savedAt:new Date().toISOString()}));
+  if(hasUtm||hasReferrer){
+    if(!localStorage.getItem(FIRST_TOUCH_KEY)){
+      localStorage.setItem(FIRST_TOUCH_KEY,JSON.stringify({...a,savedAt:new Date().toISOString()}));
+    }
+    localStorage.setItem(LAST_TOUCH_KEY,JSON.stringify({...a,savedAt:new Date().toISOString()}));
+  }
 }
 
 function readStored(key){
@@ -168,6 +195,10 @@ function loadAnalytics(){
     allow_ad_personalization_signals:false
   });
 
+  window.gtag('event','creatorbox_attribution',{
+    traffic_source:(JSON.parse(localStorage.getItem(LAST_TOUCH_KEY)||'null')||getAttribution()).traffic_source||'(direct)'
+  });
+
   const s=document.createElement('script');
   s.async=true;
   s.src='https://www.googletagmanager.com/gtag/js?id=G-15MENMNNYY';
@@ -184,6 +215,17 @@ function loadAnalytics(){
       person_profiles:'identified_only'
     });
     window.__creatorboxPostHogInitialized=true;
+    const attribution=JSON.parse(localStorage.getItem(LAST_TOUCH_KEY)||'null')||getAttribution();
+    window.posthog.capture('creatorbox_attribution',{
+      traffic_source:attribution.traffic_source||'(direct)',
+      utm_source:attribution.utm_source||'(direct)',
+      utm_medium:attribution.utm_medium||'(none)',
+      utm_campaign:attribution.utm_campaign||'(not set)',
+      utm_content:attribution.utm_content||'(not set)',
+      referrer_domain:attribution.referrer_domain||'(direct)',
+      referrer_url:attribution.referrer_url||'(direct)',
+      landing_url:attribution.landing_url||location.origin+location.pathname
+    });
   }
 }
 
@@ -236,12 +278,25 @@ document.querySelectorAll('[data-open-consent]').forEach(e=>e.onclick=x=>{
 (function(){
 function getUtm(){
   const p=new URLSearchParams(location.search);
+  let referrer_url='(direct)',referrer_domain='(direct)';
+  try{
+    if(document.referrer){
+      const u=new URL(document.referrer);
+      referrer_url=u.origin+u.pathname;
+      referrer_domain=u.hostname.replace(/^www\./,'');
+    }
+  }catch(e){}
+  const hasSource=!!p.get('utm_source');
   return {
     utm_source:p.get('utm_source')||'(direct)',
     utm_medium:p.get('utm_medium')||'(none)',
     utm_campaign:p.get('utm_campaign')||'(not set)',
     utm_content:p.get('utm_content')||'(not set)',
-    utm_term:p.get('utm_term')||'(not set)'
+    utm_term:p.get('utm_term')||'(not set)',
+    referrer_url,
+    referrer_domain,
+    traffic_source:hasSource?p.get('utm_source'):referrer_domain,
+    landing_url:location.origin+location.pathname
   };
 }
 
@@ -273,8 +328,15 @@ function buildData(link){
     last_medium:a.last.utm_medium,
     last_campaign:a.last.utm_campaign,
     last_content:a.last.utm_content,
-    page_url:location.href,
-    referrer:document.referrer||'(direct)'
+    traffic_source:a.current.traffic_source,
+    referrer_domain:a.current.referrer_domain,
+    referrer_url:a.current.referrer_url,
+    first_referrer_domain:a.first.referrer_domain||'',
+    first_referrer_url:a.first.referrer_url||'',
+    last_referrer_domain:a.last.referrer_domain||'',
+    last_referrer_url:a.last.referrer_url||'',
+    landing_url:a.current.landing_url,
+    page_url:location.href
   };
 }
 
