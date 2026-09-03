@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="CreatorBox – smarte Haushaltshelfer, praktische Alltags-Gadgets und clevere Ideen für mehr Ordnung.">
-<meta name="p:domain_verify" content="49c9ae86443f8e5a3ba827667dc2373e"/>
 <title>CreatorBox – Smarte Helfer. Mehr Platz. Weniger Stress.</title>
 <style>
 :root{--bg:#070907;--card:#111511;--card2:#151a16;--line:#293129;--green:#39ff14;--text:#f7f9f7;--muted:#aab2ab;--soft:#7f8881;--shadow:0 18px 55px rgba(0,0,0,.28)}
@@ -191,14 +190,19 @@
     };
   }
 
-  function trackAmazonClick(link){
-    if(typeof window.gtag !== 'function') return;
+  function trackAmazonClick(link, attempt){
+    attempt = attempt || 0;
+    if(typeof window.gtag !== 'function'){
+      if(attempt < 20){
+        setTimeout(function(){ trackAmazonClick(link, attempt + 1); }, 100);
+      }
+      return;
+    }
 
     const utm = getUtmData();
     const productId = link.getAttribute('data-product-id') || 'unknown';
     const productName = link.getAttribute('data-product-name') || 'unknown';
     const linkType = link.getAttribute('data-link-type') || 'product';
-
     const eventName = linkType === 'book' ? 'book_amazon_click' : 'amazon_click';
 
     window.gtag('event', eventName, {
@@ -210,15 +214,19 @@
       source_utm: utm.utm_source,
       medium_utm: utm.utm_medium,
       campaign_utm: utm.utm_campaign,
-      content_utm: utm.utm_content
+      content_utm: utm.utm_content,
+      transport_type: 'beacon'
     });
   }
 
-  document.querySelectorAll('a.amazon-link').forEach(function(link){
-    link.addEventListener('click', function(){
-      trackAmazonClick(link);
-    });
-  });
+  // Delegated click tracking: works reliably even if the page structure changes.
+  document.addEventListener('click', function(event){
+    const link = event.target.closest && event.target.closest('a.amazon-link');
+    if(!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    trackAmazonClick(link);
+  }, true);
+
+  window.__creatorboxTrackAmazonClick = trackAmazonClick;
 })();
 </script>
 
