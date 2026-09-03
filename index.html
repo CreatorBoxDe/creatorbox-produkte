@@ -56,8 +56,8 @@
     <div class="kicker">RECHTLICHES</div>
     <h2 id="datenschutzTitle">Datenschutz</h2>
     <p>Diese Website wird über GitHub Pages bereitgestellt. Für die technische Bereitstellung können technisch erforderliche Verbindungsdaten verarbeitet werden.</p>
-    <p><strong>Google Analytics 4:</strong> Wir verwenden Google Analytics nur nach deiner ausdrücklichen Einwilligung, um die Nutzung der Website statistisch auszuwerten. Rechtsgrundlage ist deine Einwilligung. Du kannst sie jederzeit über „Cookie-Einstellungen“ im Footer widerrufen.</p>
-    <p>Ohne Einwilligung wird das Google-Analytics-Skript nicht geladen und es werden keine Analytics-Daten an Google übertragen. Für Analytics werden keine Werbefunktionen oder personalisierten Werbesignale aktiviert.</p>
+    <p><strong>Google Analytics 4 + PostHog:</strong> Wir verwenden Google Analytics und PostHog nur nach deiner ausdrücklichen Einwilligung, um die Nutzung der Website statistisch auszuwerten. Rechtsgrundlage ist deine Einwilligung. Du kannst sie jederzeit über „Cookie-Einstellungen“ im Footer widerrufen.</p>
+    <p>Ohne Einwilligung werden die Google-Analytics- und PostHog-Skripte nicht geladen und es werden keine Analytics-Daten an diese Anbieter übertragen. Für Analytics werden keine Werbefunktionen oder personalisierten Werbesignale aktiviert.</p>
     <p><strong>Amazon-Klicktracking:</strong> Wenn du einem Amazon-Link zustimmst bzw. die optionalen Statistikfunktionen aktiviert hast, können Klicks auf Amazon-Links als Analytics-Ereignisse erfasst werden. Dabei werden unter anderem Produkt und Linktyp übermittelt, damit die Nutzung der CreatorBox-Empfehlungen ausgewertet werden kann.</p>
     <p>Verantwortlicher ist Sebastian Stratmann, Rosenheimer Straße 218, 81669 München, E-Mail: pinterest.bs@web.de.</p>
     <p>Du hast insbesondere Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch, soweit die gesetzlichen Voraussetzungen vorliegen. Außerdem besteht ein Beschwerderecht bei einer Datenschutzaufsichtsbehörde.</p>
@@ -82,7 +82,7 @@
 <div class="consent-banner" id="consentBanner" role="dialog" aria-modal="false" aria-labelledby="consentTitle">
   <div class="consent-inner">
     <div class="consent-title" id="consentTitle">Cookie-Einstellungen</div>
-    <p class="consent-text">Wir verwenden notwendige Funktionen. Google Analytics ist optional und wird nur aktiviert, wenn du zustimmst. Details und deine Auswahl findest du unter „Details &amp; Einstellungen“.</p>
+    <p class="consent-text">Wir verwenden notwendige Funktionen. Google Analytics und PostHog sind optional und werden nur aktiviert, wenn du zustimmst. Details und deine Auswahl findest du unter „Details &amp; Einstellungen“.</p>
     <div class="consent-settings" id="consentSettings">
       <label class="consent-row">
         <input type="checkbox" checked disabled>
@@ -90,7 +90,7 @@
       </label>
       <label class="consent-row">
         <input type="checkbox" id="analyticsConsent">
-        <span><strong>Statistik / Google Analytics</strong>Ermöglicht uns, die Nutzung der Website statistisch auszuwerten. Aktivierung nur nach deiner Einwilligung.</span>
+        <span><strong>Statistik / Google Analytics + PostHog</strong>Ermöglicht uns, die Nutzung der Website statistisch auszuwerten. Aktivierung nur nach deiner Einwilligung.</span>
       </label>
     </div>
     <div class="consent-actions">
@@ -131,6 +131,34 @@
     s.async = true;
     s.src = 'https://www.googletagmanager.com/gtag/js?id=G-15MENMNNYY';
     document.head.appendChild(s);
+
+    // PostHog – nur nach Einwilligung laden.
+    if(!window.__creatorboxPostHogInitialized){
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){
+        function g(t,e){var o=e.split(".");
+          2==o.length&&(t=t[o[0]],e=o[1]),
+          t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}
+        }
+        p||((p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,
+        p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",
+        p.onerror=function(){p=null},(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r));
+        var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],
+        u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},
+        u.people.toString=function(){return u.toString(1)+".people (stub)"},
+        o="capture identify register register_once set_config opt_out_capturing opt_in_capturing has_opted_out_capturing reset get_distinct_id get_session_id".split(" "),
+        n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])
+      },e.__SV=1)}(document,window.posthog||[]);
+
+      window.posthog.init('ph_wGBNJJdzvrUUrXF33GFkw3saoiz6PKnYHu8g2dtyVpGT',{
+        api_host:'https://eu.i.posthog.com',
+        autocapture:true,
+        capture_pageview:true,
+        capture_pageleave:true,
+        session_recording:false,
+        person_profiles:'identified_only'
+      });
+      window.__creatorboxPostHogInitialized = true;
+    }
   }
 
   function saveConsent(analytics){
@@ -191,11 +219,11 @@
   }
 
   function sendAmazonEvent(link){
-    if(typeof window.gtag !== 'function') return false;
     const utm=getUtmData();
     const linkType=link.dataset.linkType || 'product';
     const eventName=linkType === 'book' ? 'book_amazon_click' : 'amazon_click';
-    window.gtag('event',eventName,{
+
+    const eventData={
       product_id:link.dataset.productId || '',
       product_name:link.dataset.productName || '',
       link_type:linkType,
@@ -205,9 +233,26 @@
       medium_utm:utm.utm_medium,
       campaign_utm:utm.utm_campaign,
       content_utm:utm.utm_content,
-      debug_mode:true
-    });
-    return true;
+      page_url:window.location.href,
+      referrer:document.referrer || '(direct)'
+    };
+
+    let sent=false;
+
+    if(typeof window.gtag === 'function'){
+      window.gtag('event',eventName,{
+        ...eventData,
+        debug_mode:true
+      });
+      sent=true;
+    }
+
+    if(window.posthog && typeof window.posthog.capture === 'function'){
+      window.posthog.capture(eventName,eventData);
+      sent=true;
+    }
+
+    return sent;
   }
 
   document.addEventListener('click',function(e){
@@ -219,6 +264,29 @@
       attempts++;
       if(sendAmazonEvent(link) || attempts>=10) clearInterval(retry);
     },100);
+  },true);
+
+  // Wichtige externe CreatorBox-Links zusätzlich als verständliches Custom Event erfassen.
+  document.addEventListener('click',function(e){
+    const link=e.target.closest && e.target.closest('a');
+    if(!link || link.classList.contains('amazon-link')) return;
+    if(!window.posthog || typeof window.posthog.capture !== 'function') return;
+
+    const url=new URL(link.href,window.location.href);
+    if(url.origin === window.location.origin) return;
+
+    let destination='external';
+    if(url.hostname.includes('instagram.com')) destination='instagram';
+    else if(url.hostname.includes('tiktok.com')) destination='tiktok';
+    else if(url.hostname.includes('youtube.com') || url.hostname.includes('youtu.be')) destination='youtube';
+    else if(url.hostname.includes('pinterest.com')) destination='pinterest';
+
+    window.posthog.capture('external_link_click',{
+      destination:destination,
+      link_text:(link.textContent || '').trim(),
+      link_url:link.href,
+      page_url:window.location.href
+    });
   },true);
 })();
 </script>
