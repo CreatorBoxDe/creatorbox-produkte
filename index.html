@@ -181,52 +181,45 @@
 <script>
 (function(){
   function getUtmData(){
-    const params = new URLSearchParams(window.location.search);
+    const p=new URLSearchParams(window.location.search);
     return {
-      utm_source: params.get('utm_source') || '(direct)',
-      utm_medium: params.get('utm_medium') || '(none)',
-      utm_campaign: params.get('utm_campaign') || '(not set)',
-      utm_content: params.get('utm_content') || '(not set)'
+      utm_source:p.get('utm_source') || '(direct)',
+      utm_medium:p.get('utm_medium') || '(none)',
+      utm_campaign:p.get('utm_campaign') || '(not set)',
+      utm_content:p.get('utm_content') || '(not set)'
     };
   }
 
-  function trackAmazonClick(link, attempt){
-    attempt = attempt || 0;
-    if(typeof window.gtag !== 'function'){
-      if(attempt < 20){
-        setTimeout(function(){ trackAmazonClick(link, attempt + 1); }, 100);
-      }
-      return;
-    }
-
-    const utm = getUtmData();
-    const productId = link.getAttribute('data-product-id') || 'unknown';
-    const productName = link.getAttribute('data-product-name') || 'unknown';
-    const linkType = link.getAttribute('data-link-type') || 'product';
-    const eventName = linkType === 'book' ? 'book_amazon_click' : 'amazon_click';
-
-    window.gtag('event', eventName, {
-      product_id: productId,
-      product_name: productName,
-      link_type: linkType,
-      destination: 'amazon',
-      link_url: link.href,
-      source_utm: utm.utm_source,
-      medium_utm: utm.utm_medium,
-      campaign_utm: utm.utm_campaign,
-      content_utm: utm.utm_content,
-      transport_type: 'beacon'
+  function sendAmazonEvent(link){
+    if(typeof window.gtag !== 'function') return false;
+    const utm=getUtmData();
+    const linkType=link.dataset.linkType || 'product';
+    const eventName=linkType === 'book' ? 'book_amazon_click' : 'amazon_click';
+    window.gtag('event',eventName,{
+      product_id:link.dataset.productId || '',
+      product_name:link.dataset.productName || '',
+      link_type:linkType,
+      destination:'amazon',
+      link_url:link.href,
+      source_utm:utm.utm_source,
+      medium_utm:utm.utm_medium,
+      campaign_utm:utm.utm_campaign,
+      content_utm:utm.utm_content,
+      debug_mode:true
     });
+    return true;
   }
 
-  // Delegated click tracking: works reliably even if the page structure changes.
-  document.addEventListener('click', function(event){
-    const link = event.target.closest && event.target.closest('a.amazon-link');
-    if(!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-    trackAmazonClick(link);
-  }, true);
-
-  window.__creatorboxTrackAmazonClick = trackAmazonClick;
+  document.addEventListener('click',function(e){
+    const link=e.target.closest && e.target.closest('a.amazon-link');
+    if(!link) return;
+    if(sendAmazonEvent(link)) return;
+    let attempts=0;
+    const retry=setInterval(function(){
+      attempts++;
+      if(sendAmazonEvent(link) || attempts>=10) clearInterval(retry);
+    },100);
+  },true);
 })();
 </script>
 
