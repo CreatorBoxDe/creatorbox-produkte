@@ -218,7 +218,8 @@
     };
   }
 
-  function sendAmazonEvent(link){
+  function sendAmazonEvent(link, attempt){
+    attempt = attempt || 0;
     const utm=getUtmData();
     const linkType=link.dataset.linkType || 'product';
     const eventName=linkType === 'book' ? 'book_amazon_click' : 'amazon_click';
@@ -237,22 +238,22 @@
       referrer:document.referrer || '(direct)'
     };
 
-    let sent=false;
+    let posthogSent=false;
 
-    if(typeof window.gtag === 'function'){
+    // GA4 und PostHog werden unabhängig voneinander gesendet.
+    if(typeof window.gtag === 'function' && attempt === 0){
       window.gtag('event',eventName,{
         ...eventData,
         debug_mode:true
       });
-      sent=true;
     }
 
     if(window.posthog && typeof window.posthog.capture === 'function'){
       window.posthog.capture(eventName,eventData);
-      sent=true;
+      posthogSent=true;
     }
 
-    return sent;
+    return posthogSent;
   }
 
   document.addEventListener('click',function(e){
