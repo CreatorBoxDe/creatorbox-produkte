@@ -249,7 +249,7 @@
     }
 
     if(window.posthog && typeof window.posthog.capture === 'function'){
-      window.posthog.capture(eventName,eventData);
+      window.posthog.capture(eventName,eventData,{transport:'sendBeacon',send_instantly:true});
       posthogSent=true;
     }
 
